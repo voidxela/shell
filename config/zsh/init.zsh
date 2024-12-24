@@ -87,6 +87,7 @@ else
     printf "S># Init croq ok!\n"
 fi
 
+set +u
 printf "S>* X4 init ok!\n"
 clear
 printf "X4>> Welcome to zsh!\n"
