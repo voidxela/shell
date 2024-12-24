@@ -1,0 +1,30 @@
+#!/bin/zsh
+#function t_setup_real {
+  0=${(%):-%x}
+  local testdir="${0:A:h:h}"
+  local prjdir="${0:A:h:h:h}"
+
+  # undo setup so we clone for real
+  zstyle ':antidote:tests' cloning 'on'
+  (( $+functions[git] )) && unfunction git
+
+  # unset other testing zstyles
+  zstyle -d ':antidote:defer' bundle
+
+  # unset rupa/z
+  (( $+aliases[z] )) && unalias z
+
+  # replace .zsh_plugins.txt with real versions
+  local file
+  for file in .zsh_plugins.txt .zsh_plugins.zsh; do
+    [[ -f $ZDOTDIR/$file ]] && command rm -f -- "$ZDOTDIR/$file"
+    [[ -f $testdir/real/$file ]] && command rm -f -- "$testdir/real/$file"
+  done
+
+  # clean out antidote home
+  [[ -d $ANTIDOTE_HOME ]] && command rm -rf -- "$ANTIDOTE_HOME"
+  mkdir -p "$ANTIDOTE_HOME"
+
+  # source antidote
+  source $prjdir/antidote.zsh
+#}

@@ -1,0 +1,7 @@
+alias ls="ls -lha --color=auto"
+alias hx="helix"
+alias vi="helix"
+alias sys="sudo systemctl"
+alias usys="systemctl --user"
+alias log="sudo journalctl -o bat -eu"
+alias ulog="journalctl -o bat -eu"

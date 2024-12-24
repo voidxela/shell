@@ -1,0 +1,13 @@
+links:
+- from: config/zsh
+  to: Local/config/zsh
+- from: config/zsh/init.zsh
+  to: .zshrc
+- from: config/croque
+  to: .config/croque
+- from: config/asdf/tool-versions
+  to: .tool-versions
+- from: vendor/asdf-0.15.0
+  to: .asdf
+- from: vendor/antidote-1.9.7
+  to: Local/misc/antidote
